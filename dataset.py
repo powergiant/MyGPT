@@ -27,13 +27,15 @@ class Dataset(object):
         input = torch.stack([torch.from_numpy(data[i:i+block_size].astype(np.int64)) for i in index_start])
         target = torch.stack([torch.from_numpy(data[i+1:i+1+block_size].astype(np.int64)) for i in index_start])
 
-        device_type = 'cuda' if 'cuda' in device.type else 'cpu'
-        if device_type == 'cuda':
-            input = input.pin_memory().to(device, non_blocking=True)
-            target = target.pin_memory().to(device, non_blocking=True)
-        else:
-            input = input.to(device)
-            target = target.to(device)
+        # device_type = 'cuda' if 'cuda' in device.type else 'cpu'
+        # if device_type == 'cuda':
+        #     input = input.pin_memory().to(device, non_blocking=True)
+        #     target = target.pin_memory().to(device, non_blocking=True)
+        # else:
+        #     input = input.to(device)
+        #     target = target.to(device)
+        input = input.to(device)
+        target = target.to(device)
 
         return input, target
 

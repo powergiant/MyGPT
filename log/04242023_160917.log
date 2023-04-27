@@ -1,0 +1,916 @@
+using fused AdamW: False
+iter 1: loss 4.1820 time 1616.98ms
+iter 2: loss 4.1831 time 1999.36ms
+iter 3: loss 4.1763 time 1629.26ms
+iter 4: loss 4.1532 time 1512.74ms
+iter 5: loss 4.1204 time 1859.91ms
+iter 6: loss 4.0574 time 1693.56ms
+iter 7: loss 4.0221 time 1810.56ms
+iter 8: loss 3.9686 time 1429.39ms
+iter 9: loss 3.9297 time 1434.13ms
+iter 10: loss 3.8811 time 1470.43ms
+save check point to out: iter 10 loss 3.8811 loss_val 3.8629
+iter 11: loss 3.8470 time 2243.74ms
+iter 12: loss 3.8133 time 1408.08ms
+iter 13: loss 3.7749 time 1450.72ms
+iter 14: loss 3.7762 time 1477.13ms
+iter 15: loss 3.7462 time 1419.34ms
+iter 16: loss 3.7137 time 1482.59ms
+iter 17: loss 3.7124 time 1386.57ms
+iter 18: loss 3.7003 time 1407.50ms
+iter 19: loss 3.7049 time 1452.79ms
+iter 20: loss 3.6119 time 1497.97ms
+save check point to out: iter 20 loss 3.6119 loss_val 3.6636
+iter 21: loss 3.6151 time 3106.08ms
+iter 22: loss 3.6126 time 1998.62ms
+iter 23: loss 3.5865 time 1466.28ms
+iter 24: loss 3.5840 time 1520.60ms
+iter 25: loss 3.5808 time 1607.48ms
+iter 26: loss 3.5806 time 1558.56ms
+iter 27: loss 3.4853 time 1531.17ms
+iter 28: loss 3.5593 time 1615.56ms
+iter 29: loss 3.4598 time 1405.70ms
+iter 30: loss 3.5025 time 1404.05ms
+save check point to out: iter 30 loss 3.5025 loss_val 3.4938
+iter 31: loss 3.4914 time 2270.08ms
+iter 32: loss 3.4605 time 1386.60ms
+iter 33: loss 3.4443 time 1475.44ms
+iter 34: loss 3.4465 time 1416.38ms
+iter 35: loss 3.3433 time 1662.82ms
+iter 36: loss 3.4149 time 1746.28ms
+iter 37: loss 3.3890 time 1579.85ms
+iter 38: loss 3.4161 time 1602.47ms
+iter 39: loss 3.3798 time 1465.04ms
+iter 40: loss 3.3779 time 1541.98ms
+save check point to out: iter 40 loss 3.3779 loss_val 3.3239
+iter 41: loss 3.2229 time 2278.91ms
+iter 42: loss 3.2883 time 1423.90ms
+iter 43: loss 3.1515 time 1476.08ms
+iter 44: loss 3.2666 time 1433.01ms
+iter 45: loss 3.1396 time 1435.42ms
+iter 46: loss 3.1742 time 1461.27ms
+iter 47: loss 3.0751 time 1474.01ms
+iter 48: loss 3.0679 time 1518.50ms
+iter 49: loss 3.1393 time 1578.64ms
+iter 50: loss 3.0439 time 1483.08ms
+save check point to out: iter 50 loss 3.0439 loss_val 3.0581
+iter 51: loss 3.0699 time 2267.88ms
+iter 52: loss 2.9630 time 1432.04ms
+iter 53: loss 2.9911 time 1405.69ms
+iter 54: loss 2.9892 time 1436.52ms
+iter 55: loss 3.0444 time 1449.15ms
+iter 56: loss 2.9755 time 1413.45ms
+iter 57: loss 2.9488 time 1439.96ms
+iter 58: loss 2.9228 time 1462.85ms
+iter 59: loss 2.8232 time 1600.69ms
+iter 60: loss 2.8298 time 1648.17ms
+save check point to out: iter 60 loss 2.8298 loss_val 2.8914
+iter 61: loss 2.9306 time 3356.18ms
+iter 62: loss 2.8645 time 1753.80ms
+iter 63: loss 2.8373 time 1679.01ms
+iter 64: loss 2.7596 time 3343.47ms
+iter 65: loss 2.8142 time 2765.35ms
+iter 66: loss 2.7839 time 1584.81ms
+iter 67: loss 2.7741 time 1465.86ms
+iter 68: loss 2.8385 time 1460.74ms
+iter 69: loss 2.7843 time 1629.71ms
+iter 70: loss 2.7317 time 1615.86ms
+save check point to out: iter 70 loss 2.7317 loss_val 2.7482
+iter 71: loss 2.7397 time 3035.04ms
+iter 72: loss 2.6813 time 1497.18ms
+iter 73: loss 2.7052 time 1506.46ms
+iter 74: loss 2.7741 time 1491.75ms
+iter 75: loss 2.6417 time 1406.83ms
+iter 76: loss 2.7470 time 1771.38ms
+iter 77: loss 2.7538 time 2106.38ms
+iter 78: loss 2.7616 time 2178.25ms
+iter 79: loss 2.6370 time 1975.80ms
+iter 80: loss 2.6241 time 1467.61ms
+save check point to out: iter 80 loss 2.6241 loss_val 2.6535
+iter 81: loss 2.6394 time 2896.13ms
+iter 82: loss 2.6421 time 1692.03ms
+iter 83: loss 2.7006 time 1462.27ms
+iter 84: loss 2.7099 time 1405.49ms
+iter 85: loss 2.5932 time 1694.56ms
+iter 86: loss 2.6114 time 1453.82ms
+iter 87: loss 2.7131 time 1887.46ms
+iter 88: loss 2.6656 time 2232.97ms
+iter 89: loss 2.5749 time 1640.70ms
+iter 90: loss 2.5872 time 1949.62ms
+save check point to out: iter 90 loss 2.5872 loss_val 2.5972
+iter 91: loss 2.5969 time 2293.58ms
+iter 92: loss 2.5583 time 1936.19ms
+iter 93: loss 2.6163 time 1489.85ms
+iter 94: loss 2.5626 time 1467.82ms
+iter 95: loss 2.6870 time 1471.96ms
+iter 96: loss 2.5400 time 1449.41ms
+iter 97: loss 2.5755 time 1445.61ms
+iter 98: loss 2.5861 time 1465.35ms
+iter 99: loss 2.5801 time 1505.31ms
+iter 100: loss 2.5636 time 1469.86ms
+save check point to out: iter 100 loss 2.5636 loss_val 2.5252
+iter 101: loss 2.5351 time 2885.08ms
+iter 102: loss 2.5715 time 1428.41ms
+iter 103: loss 2.6620 time 1995.69ms
+iter 104: loss 2.5881 time 1890.43ms
+iter 105: loss 2.5854 time 1456.08ms
+iter 106: loss 2.5112 time 1770.10ms
+iter 107: loss 2.5883 time 1965.46ms
+iter 108: loss 2.5788 time 2185.60ms
+iter 109: loss 2.4423 time 1910.04ms
+iter 110: loss 2.4956 time 1834.95ms
+save check point to out: iter 110 loss 2.4956 loss_val 2.4994
+iter 111: loss 2.5143 time 2358.46ms
+iter 112: loss 2.4661 time 1677.16ms
+iter 113: loss 2.4566 time 1440.77ms
+iter 114: loss 2.5360 time 1405.33ms
+iter 115: loss 2.4841 time 1394.58ms
+iter 116: loss 2.5138 time 1828.31ms
+iter 117: loss 2.5366 time 1478.95ms
+iter 118: loss 2.4448 time 1590.27ms
+iter 119: loss 2.4504 time 1485.52ms
+iter 120: loss 2.4628 time 1629.49ms
+save check point to out: iter 120 loss 2.4628 loss_val 2.4942
+iter 121: loss 2.4305 time 2266.82ms
+iter 122: loss 2.5513 time 1459.15ms
+iter 123: loss 2.4945 time 1841.88ms
+iter 124: loss 2.3967 time 1968.31ms
+iter 125: loss 2.5046 time 1502.30ms
+iter 126: loss 2.3670 time 1499.79ms
+iter 127: loss 2.3827 time 1494.39ms
+iter 128: loss 2.3795 time 1487.92ms
+iter 129: loss 2.4142 time 1455.11ms
+iter 130: loss 2.3542 time 1688.12ms
+save check point to out: iter 130 loss 2.3542 loss_val 2.3692
+iter 131: loss 2.4011 time 2348.67ms
+iter 132: loss 2.3414 time 1463.10ms
+iter 133: loss 2.3413 time 1464.22ms
+iter 134: loss 2.3145 time 1460.43ms
+iter 135: loss 2.3967 time 1488.69ms
+iter 136: loss 2.3196 time 1507.12ms
+iter 137: loss 2.2858 time 1468.27ms
+iter 138: loss 2.3792 time 1446.18ms
+iter 139: loss 2.3595 time 1511.57ms
+iter 140: loss 2.3250 time 1437.55ms
+save check point to out: iter 140 loss 2.3250 loss_val 2.3120
+iter 141: loss 2.3616 time 2295.09ms
+iter 142: loss 2.3327 time 1419.55ms
+iter 143: loss 2.2741 time 1487.46ms
+iter 144: loss 2.2024 time 1433.98ms
+iter 145: loss 2.2501 time 1406.76ms
+iter 146: loss 2.3239 time 1413.98ms
+iter 147: loss 2.2001 time 1415.21ms
+iter 148: loss 2.2508 time 1431.17ms
+iter 149: loss 2.3070 time 1423.94ms
+iter 150: loss 2.2534 time 1461.28ms
+save check point to out: iter 150 loss 2.2534 loss_val 2.2466
+iter 151: loss 2.2738 time 2433.32ms
+iter 152: loss 2.2803 time 3393.51ms
+iter 153: loss 2.3101 time 2280.55ms
+iter 154: loss 2.2828 time 2793.02ms
+iter 155: loss 2.2584 time 2500.32ms
+iter 156: loss 2.2150 time 1656.59ms
+iter 157: loss 2.1792 time 1580.50ms
+iter 158: loss 2.2243 time 1560.28ms
+iter 159: loss 2.0977 time 1664.97ms
+iter 160: loss 2.2548 time 1623.71ms
+save check point to out: iter 160 loss 2.2548 loss_val 2.1969
+iter 161: loss 2.0913 time 2317.57ms
+iter 162: loss 2.1651 time 1446.03ms
+iter 163: loss 2.1243 time 1466.79ms
+iter 164: loss 2.0933 time 1477.98ms
+iter 165: loss 2.1362 time 1499.13ms
+iter 166: loss 2.0916 time 1412.05ms
+iter 167: loss 2.1280 time 1458.13ms
+iter 168: loss 2.0836 time 1402.97ms
+iter 169: loss 2.1941 time 1452.48ms
+iter 170: loss 2.1527 time 1463.19ms
+save check point to out: iter 170 loss 2.1527 loss_val 2.1352
+iter 171: loss 2.0664 time 2281.11ms
+iter 172: loss 2.0792 time 1457.08ms
+iter 173: loss 2.0088 time 1439.09ms
+iter 174: loss 2.1630 time 1468.07ms
+iter 175: loss 2.0639 time 1881.76ms
+iter 176: loss 2.0552 time 1781.70ms
+iter 177: loss 2.0096 time 1490.17ms
+iter 178: loss 2.1557 time 1485.80ms
+iter 179: loss 1.9806 time 1706.25ms
+iter 180: loss 2.0369 time 1528.42ms
+save check point to out: iter 180 loss 2.0369 loss_val 2.1077
+iter 181: loss 2.1026 time 2307.77ms
+iter 182: loss 1.9942 time 1473.50ms
+iter 183: loss 2.1034 time 1523.17ms
+iter 184: loss 1.9805 time 1529.25ms
+iter 185: loss 2.0337 time 1441.63ms
+iter 186: loss 1.9866 time 1469.99ms
+iter 187: loss 2.0504 time 1590.50ms
+iter 188: loss 2.0848 time 1470.51ms
+iter 189: loss 1.9876 time 1490.27ms
+iter 190: loss 2.0167 time 1479.67ms
+save check point to out: iter 190 loss 2.0167 loss_val 2.0558
+iter 191: loss 2.0443 time 2287.66ms
+iter 192: loss 1.9687 time 1463.54ms
+iter 193: loss 2.0828 time 1475.77ms
+iter 194: loss 1.9960 time 1472.60ms
+iter 195: loss 2.0515 time 1470.83ms
+iter 196: loss 1.9724 time 1468.62ms
+iter 197: loss 1.9493 time 1426.03ms
+iter 198: loss 1.9716 time 1468.12ms
+iter 199: loss 1.9916 time 1443.53ms
+iter 200: loss 2.0124 time 1477.64ms
+save check point to out: iter 200 loss 2.0124 loss_val 2.0496
+iter 201: loss 1.9908 time 2486.21ms
+iter 202: loss 2.0636 time 1600.62ms
+iter 203: loss 1.9485 time 2589.43ms
+iter 204: loss 1.9829 time 2104.70ms
+iter 205: loss 1.9209 time 1481.29ms
+iter 206: loss 1.9457 time 1512.85ms
+iter 207: loss 1.8989 time 1532.31ms
+iter 208: loss 1.9676 time 1452.00ms
+iter 209: loss 1.9588 time 1541.92ms
+iter 210: loss 1.9193 time 1476.05ms
+save check point to out: iter 210 loss 1.9193 loss_val 1.9947
+iter 211: loss 1.9049 time 2559.77ms
+iter 212: loss 1.9231 time 1759.76ms
+iter 213: loss 1.8896 time 2013.81ms
+iter 214: loss 1.9249 time 1717.01ms
+iter 215: loss 1.9953 time 1631.67ms
+iter 216: loss 1.8494 time 1508.49ms
+iter 217: loss 1.9049 time 1448.40ms
+iter 218: loss 1.9961 time 1453.20ms
+iter 219: loss 1.8774 time 1444.19ms
+iter 220: loss 1.8342 time 1448.49ms
+save check point to out: iter 220 loss 1.8342 loss_val 1.9955
+iter 221: loss 1.9781 time 2259.95ms
+iter 222: loss 1.8634 time 1424.97ms
+iter 223: loss 1.8804 time 1416.48ms
+iter 224: loss 1.8747 time 1423.19ms
+iter 225: loss 1.9218 time 1471.61ms
+iter 226: loss 1.9123 time 1444.54ms
+iter 227: loss 1.8648 time 1471.52ms
+iter 228: loss 1.8786 time 1455.29ms
+iter 229: loss 1.8757 time 1457.20ms
+iter 230: loss 1.8038 time 1443.10ms
+save check point to out: iter 230 loss 1.8038 loss_val 1.9556
+iter 231: loss 1.8241 time 2287.64ms
+iter 232: loss 1.7976 time 1479.02ms
+iter 233: loss 1.7500 time 1482.62ms
+iter 234: loss 1.7804 time 1528.28ms
+iter 235: loss 1.8395 time 1425.40ms
+iter 236: loss 1.8337 time 1443.70ms
+iter 237: loss 1.8134 time 1465.38ms
+iter 238: loss 1.8084 time 1421.59ms
+iter 239: loss 1.8478 time 1478.21ms
+iter 240: loss 1.8494 time 1539.32ms
+save check point to out: iter 240 loss 1.8494 loss_val 1.9153
+iter 241: loss 1.8149 time 2451.97ms
+iter 242: loss 1.6977 time 1691.17ms
+iter 243: loss 1.7806 time 1999.98ms
+iter 244: loss 1.8478 time 1933.25ms
+iter 245: loss 1.8154 time 1404.05ms
+iter 246: loss 1.7701 time 1426.46ms
+iter 247: loss 1.8158 time 1414.12ms
+iter 248: loss 1.7361 time 1441.74ms
+iter 249: loss 1.7012 time 1440.56ms
+iter 250: loss 1.6536 time 1444.72ms
+save check point to out: iter 250 loss 1.6536 loss_val 1.8956
+iter 251: loss 1.7779 time 2293.24ms
+iter 252: loss 1.6920 time 1432.32ms
+iter 253: loss 1.7415 time 1454.35ms
+iter 254: loss 1.6334 time 1444.05ms
+iter 255: loss 1.7404 time 1432.39ms
+iter 256: loss 1.7502 time 1452.21ms
+iter 257: loss 1.7372 time 1438.51ms
+iter 258: loss 1.6951 time 1447.30ms
+iter 259: loss 1.7661 time 1452.90ms
+iter 260: loss 1.6395 time 1441.96ms
+save check point to out: iter 260 loss 1.6395 loss_val 1.8854
+iter 261: loss 1.7238 time 2271.04ms
+iter 262: loss 1.6543 time 1440.25ms
+iter 263: loss 1.7561 time 1478.15ms
+iter 264: loss 1.8175 time 1449.94ms
+iter 265: loss 1.7776 time 1468.11ms
+iter 266: loss 1.6445 time 1469.29ms
+iter 267: loss 1.7097 time 1430.92ms
+iter 268: loss 1.7105 time 1463.63ms
+iter 269: loss 1.7234 time 1451.24ms
+iter 270: loss 1.7112 time 1407.75ms
+save check point to out: iter 270 loss 1.7112 loss_val 1.8227
+iter 271: loss 1.7378 time 2272.43ms
+iter 272: loss 1.7323 time 1486.68ms
+iter 273: loss 1.7458 time 1447.16ms
+iter 274: loss 1.7388 time 1417.76ms
+iter 275: loss 1.7479 time 1427.34ms
+iter 276: loss 1.7496 time 1472.32ms
+iter 277: loss 1.6062 time 1450.57ms
+iter 278: loss 1.6940 time 1434.86ms
+iter 279: loss 1.7155 time 1479.94ms
+iter 280: loss 1.8033 time 1440.25ms
+save check point to out: iter 280 loss 1.8033 loss_val 1.8488
+iter 281: loss 1.6852 time 2301.53ms
+iter 282: loss 1.6772 time 1450.94ms
+iter 283: loss 1.5652 time 1493.05ms
+iter 284: loss 1.6651 time 1515.18ms
+iter 285: loss 1.6033 time 1418.75ms
+iter 286: loss 1.6967 time 1488.95ms
+iter 287: loss 1.6069 time 1501.68ms
+iter 288: loss 1.6669 time 1475.27ms
+iter 289: loss 1.5976 time 1449.81ms
+iter 290: loss 1.6611 time 1451.18ms
+save check point to out: iter 290 loss 1.6611 loss_val 1.8183
+iter 291: loss 1.6796 time 2288.75ms
+iter 292: loss 1.7246 time 1470.53ms
+iter 293: loss 1.5993 time 1453.55ms
+iter 294: loss 1.6725 time 1499.07ms
+iter 295: loss 1.6803 time 1466.66ms
+iter 296: loss 1.7210 time 1455.00ms
+iter 297: loss 1.6591 time 1502.23ms
+iter 298: loss 1.6275 time 1455.33ms
+iter 299: loss 1.5739 time 1461.39ms
+iter 300: loss 1.6625 time 1517.28ms
+save check point to out: iter 300 loss 1.6625 loss_val 1.8009
+iter 301: loss 1.5634 time 2373.25ms
+iter 302: loss 1.6942 time 1459.40ms
+iter 303: loss 1.5670 time 1507.22ms
+iter 304: loss 1.5807 time 1537.23ms
+iter 305: loss 1.4870 time 1457.88ms
+iter 306: loss 1.6684 time 1514.86ms
+iter 307: loss 1.6337 time 1496.54ms
+iter 308: loss 1.5928 time 1479.26ms
+iter 309: loss 1.6375 time 1668.04ms
+iter 310: loss 1.6423 time 1611.96ms
+save check point to out: iter 310 loss 1.6423 loss_val 1.7969
+iter 311: loss 1.5737 time 2490.33ms
+iter 312: loss 1.7252 time 2310.87ms
+iter 313: loss 1.6157 time 1623.17ms
+iter 314: loss 1.6998 time 2385.84ms
+iter 315: loss 1.5829 time 1756.58ms
+iter 316: loss 1.6010 time 1447.69ms
+iter 317: loss 1.5483 time 1417.00ms
+iter 318: loss 1.6857 time 1411.94ms
+iter 319: loss 1.6209 time 1437.87ms
+iter 320: loss 1.5532 time 1481.11ms
+save check point to out: iter 320 loss 1.5532 loss_val 1.7781
+iter 321: loss 1.5159 time 2280.71ms
+iter 322: loss 1.6587 time 1593.82ms
+iter 323: loss 1.4931 time 1602.69ms
+iter 324: loss 1.7255 time 1536.74ms
+iter 325: loss 1.6790 time 1512.88ms
+iter 326: loss 1.6841 time 1507.88ms
+iter 327: loss 1.4687 time 1471.64ms
+iter 328: loss 1.5852 time 1504.08ms
+iter 329: loss 1.5697 time 1476.58ms
+iter 330: loss 1.5229 time 1475.24ms
+save check point to out: iter 330 loss 1.5229 loss_val 1.7546
+iter 331: loss 1.6975 time 2260.66ms
+iter 332: loss 1.5987 time 1491.40ms
+iter 333: loss 1.6341 time 1459.39ms
+iter 334: loss 1.4696 time 1475.62ms
+iter 335: loss 1.5275 time 1517.05ms
+iter 336: loss 1.5917 time 1486.80ms
+iter 337: loss 1.5513 time 1477.07ms
+iter 338: loss 1.5713 time 1477.11ms
+iter 339: loss 1.4895 time 1520.42ms
+iter 340: loss 1.5856 time 1477.18ms
+save check point to out: iter 340 loss 1.5856 loss_val 1.7695
+iter 341: loss 1.4508 time 2563.40ms
+iter 342: loss 1.5820 time 1457.87ms
+iter 343: loss 1.6113 time 1456.76ms
+iter 344: loss 1.6294 time 1555.73ms
+iter 345: loss 1.6437 time 1659.73ms
+iter 346: loss 1.5472 time 2239.31ms
+iter 347: loss 1.4940 time 3111.01ms
+iter 348: loss 1.6224 time 1505.18ms
+iter 349: loss 1.5310 time 1526.62ms
+iter 350: loss 1.6073 time 2431.92ms
+save check point to out: iter 350 loss 1.6073 loss_val 1.7372
+iter 351: loss 1.5023 time 3758.48ms
+iter 352: loss 1.5783 time 2155.57ms
+iter 353: loss 1.6542 time 2980.11ms
+iter 354: loss 1.4773 time 1882.98ms
+iter 355: loss 1.5262 time 1474.69ms
+iter 356: loss 1.5646 time 1484.04ms
+iter 357: loss 1.6341 time 1513.43ms
+iter 358: loss 1.4508 time 1596.61ms
+iter 359: loss 1.5843 time 1657.92ms
+iter 360: loss 1.5285 time 1909.38ms
+save check point to out: iter 360 loss 1.5285 loss_val 1.7265
+iter 361: loss 1.5122 time 2527.99ms
+iter 362: loss 1.4991 time 1584.16ms
+iter 363: loss 1.5706 time 1579.25ms
+iter 364: loss 1.5242 time 1808.19ms
+iter 365: loss 1.5114 time 2076.38ms
+iter 366: loss 1.5705 time 1627.02ms
+iter 367: loss 1.6031 time 2117.71ms
+iter 368: loss 1.5547 time 1608.69ms
+iter 369: loss 1.5987 time 1997.30ms
+iter 370: loss 1.5595 time 1558.71ms
+save check point to out: iter 370 loss 1.5595 loss_val 1.7321
+iter 371: loss 1.4976 time 2317.76ms
+iter 372: loss 1.5197 time 1478.41ms
+iter 373: loss 1.4557 time 1481.10ms
+iter 374: loss 1.5328 time 1438.23ms
+iter 375: loss 1.4008 time 1488.04ms
+iter 376: loss 1.6795 time 1432.77ms
+iter 377: loss 1.5255 time 1551.93ms
+iter 378: loss 1.5585 time 1660.60ms
+iter 379: loss 1.5930 time 1506.70ms
+iter 380: loss 1.5339 time 1492.05ms
+save check point to out: iter 380 loss 1.5339 loss_val 1.7193
+iter 381: loss 1.5235 time 2327.81ms
+iter 382: loss 1.4056 time 1587.01ms
+iter 383: loss 1.6121 time 1567.28ms
+iter 384: loss 1.4653 time 1580.83ms
+iter 385: loss 1.6190 time 1619.79ms
+iter 386: loss 1.5720 time 1688.27ms
+iter 387: loss 1.5574 time 1572.84ms
+iter 388: loss 1.4673 time 1525.36ms
+iter 389: loss 1.6447 time 1608.84ms
+iter 390: loss 1.4060 time 1595.72ms
+save check point to out: iter 390 loss 1.4060 loss_val 1.7025
+iter 391: loss 1.4999 time 2369.69ms
+iter 392: loss 1.4948 time 1482.91ms
+iter 393: loss 1.5676 time 1479.41ms
+iter 394: loss 1.4172 time 1491.83ms
+iter 395: loss 1.4992 time 1529.77ms
+iter 396: loss 1.4830 time 1492.76ms
+iter 397: loss 1.6582 time 1483.57ms
+iter 398: loss 1.4964 time 1512.95ms
+iter 399: loss 1.5011 time 1717.79ms
+iter 400: loss 1.4535 time 1707.31ms
+save check point to out: iter 400 loss 1.4535 loss_val 1.6888
+iter 401: loss 1.4485 time 2614.87ms
+iter 402: loss 1.5688 time 1503.14ms
+iter 403: loss 1.5231 time 1649.11ms
+iter 404: loss 1.3572 time 1583.70ms
+iter 405: loss 1.5077 time 1501.96ms
+iter 406: loss 1.6001 time 1454.15ms
+iter 407: loss 1.4467 time 1574.76ms
+iter 408: loss 1.5306 time 1527.68ms
+iter 409: loss 1.4241 time 1652.24ms
+iter 410: loss 1.5302 time 1527.96ms
+save check point to out: iter 410 loss 1.5302 loss_val 1.6864
+iter 411: loss 1.6158 time 2234.90ms
+iter 412: loss 1.5854 time 1476.08ms
+iter 413: loss 1.4980 time 1496.95ms
+iter 414: loss 1.5065 time 1654.22ms
+iter 415: loss 1.4673 time 1489.60ms
+iter 416: loss 1.4171 time 1526.76ms
+iter 417: loss 1.4335 time 1648.60ms
+iter 418: loss 1.5108 time 1581.03ms
+iter 419: loss 1.5205 time 1568.44ms
+iter 420: loss 1.4352 time 1508.91ms
+save check point to out: iter 420 loss 1.4352 loss_val 1.6720
+iter 421: loss 1.3270 time 2572.17ms
+iter 422: loss 1.5702 time 1463.93ms
+iter 423: loss 1.4418 time 1500.74ms
+iter 424: loss 1.3648 time 1482.07ms
+iter 425: loss 1.5414 time 1476.41ms
+iter 426: loss 1.4932 time 1508.97ms
+iter 427: loss 1.4935 time 1535.07ms
+iter 428: loss 1.4642 time 1545.65ms
+iter 429: loss 1.4373 time 1629.67ms
+iter 430: loss 1.5140 time 1511.47ms
+save check point to out: iter 430 loss 1.5140 loss_val 1.6866
+iter 431: loss 1.4053 time 2533.97ms
+iter 432: loss 1.5040 time 1531.08ms
+iter 433: loss 1.5412 time 1550.86ms
+iter 434: loss 1.6521 time 1564.41ms
+iter 435: loss 1.5161 time 1683.70ms
+iter 436: loss 1.6638 time 1548.79ms
+iter 437: loss 1.4888 time 1653.99ms
+iter 438: loss 1.5074 time 1629.82ms
+iter 439: loss 1.4822 time 2918.25ms
+iter 440: loss 1.5024 time 1953.47ms
+save check point to out: iter 440 loss 1.5024 loss_val 1.6643
+iter 441: loss 1.4867 time 2687.92ms
+iter 442: loss 1.3345 time 1514.71ms
+iter 443: loss 1.4673 time 1502.15ms
+iter 444: loss 1.4621 time 1582.71ms
+iter 445: loss 1.5174 time 1553.56ms
+iter 446: loss 1.3716 time 1497.65ms
+iter 447: loss 1.5730 time 1502.64ms
+iter 448: loss 1.5820 time 1615.41ms
+iter 449: loss 1.5135 time 1780.03ms
+iter 450: loss 1.4197 time 1584.39ms
+save check point to out: iter 450 loss 1.4197 loss_val 1.6671
+iter 451: loss 1.5530 time 2753.31ms
+iter 452: loss 1.4291 time 2059.68ms
+iter 453: loss 1.4333 time 1476.82ms
+iter 454: loss 1.4624 time 1508.66ms
+iter 455: loss 1.4557 time 1517.47ms
+iter 456: loss 1.3286 time 1538.11ms
+iter 457: loss 1.5138 time 1490.63ms
+iter 458: loss 1.5044 time 1488.72ms
+iter 459: loss 1.6107 time 1491.40ms
+iter 460: loss 1.3615 time 1488.17ms
+save check point to out: iter 460 loss 1.3615 loss_val 1.6577
+iter 461: loss 1.3804 time 2390.33ms
+iter 462: loss 1.4863 time 1533.51ms
+iter 463: loss 1.4490 time 1505.50ms
+iter 464: loss 1.4223 time 1682.97ms
+iter 465: loss 1.3365 time 1502.68ms
+iter 466: loss 1.3796 time 1467.92ms
+iter 467: loss 1.4306 time 1468.40ms
+iter 468: loss 1.4187 time 1555.61ms
+iter 469: loss 1.5939 time 1525.56ms
+iter 470: loss 1.5887 time 1670.38ms
+save check point to out: iter 470 loss 1.5887 loss_val 1.6847
+iter 471: loss 1.3809 time 2412.71ms
+iter 472: loss 1.5377 time 1522.82ms
+iter 473: loss 1.4521 time 1603.57ms
+iter 474: loss 1.4799 time 1855.72ms
+iter 475: loss 1.4846 time 1775.02ms
+iter 476: loss 1.4830 time 1472.99ms
+iter 477: loss 1.4875 time 1427.05ms
+iter 478: loss 1.4089 time 1455.79ms
+iter 479: loss 1.3946 time 1496.88ms
+iter 480: loss 1.5111 time 1680.38ms
+save check point to out: iter 480 loss 1.5111 loss_val 1.6791
+iter 481: loss 1.4171 time 2426.38ms
+iter 482: loss 1.4320 time 1546.32ms
+iter 483: loss 1.3398 time 1637.85ms
+iter 484: loss 1.4503 time 1465.45ms
+iter 485: loss 1.4153 time 1472.64ms
+iter 486: loss 1.5430 time 1466.58ms
+iter 487: loss 1.4036 time 1626.18ms
+iter 488: loss 1.4454 time 1508.29ms
+iter 489: loss 1.5256 time 1466.45ms
+iter 490: loss 1.4952 time 1524.50ms
+save check point to out: iter 490 loss 1.4952 loss_val 1.6633
+iter 491: loss 1.4265 time 2367.27ms
+iter 492: loss 1.4863 time 1534.46ms
+iter 493: loss 1.4135 time 1488.28ms
+iter 494: loss 1.3946 time 1445.67ms
+iter 495: loss 1.4389 time 1450.10ms
+iter 496: loss 1.4847 time 1543.98ms
+iter 497: loss 1.4253 time 2036.02ms
+iter 498: loss 1.4655 time 1479.37ms
+iter 499: loss 1.5473 time 1529.34ms
+iter 500: loss 1.4888 time 1667.62ms
+save check point to out: iter 500 loss 1.4888 loss_val 1.6479
+iter 501: loss 1.3897 time 2500.43ms
+iter 502: loss 1.4624 time 1517.24ms
+iter 503: loss 1.2999 time 1472.67ms
+iter 504: loss 1.4894 time 1483.67ms
+iter 505: loss 1.4652 time 1535.52ms
+iter 506: loss 1.4787 time 1599.89ms
+iter 507: loss 1.2987 time 1991.53ms
+iter 508: loss 1.4153 time 1565.84ms
+iter 509: loss 1.5936 time 2082.03ms
+iter 510: loss 1.5504 time 2492.51ms
+save check point to out: iter 510 loss 1.5504 loss_val 1.6483
+iter 511: loss 1.4188 time 2542.84ms
+iter 512: loss 1.3520 time 1627.90ms
+iter 513: loss 1.4780 time 1998.54ms
+iter 514: loss 1.4170 time 1807.12ms
+iter 515: loss 1.3538 time 1583.90ms
+iter 516: loss 1.4076 time 1491.00ms
+iter 517: loss 1.5040 time 1475.34ms
+iter 518: loss 1.4956 time 1485.85ms
+iter 519: loss 1.4123 time 1490.52ms
+iter 520: loss 1.3813 time 1448.15ms
+save check point to out: iter 520 loss 1.3813 loss_val 1.6389
+iter 521: loss 1.4242 time 2336.23ms
+iter 522: loss 1.5363 time 1471.65ms
+iter 523: loss 1.4358 time 1528.20ms
+iter 524: loss 1.5033 time 1452.25ms
+iter 525: loss 1.4793 time 1476.88ms
+iter 526: loss 1.4055 time 1544.54ms
+iter 527: loss 1.4725 time 1638.40ms
+iter 528: loss 1.4709 time 1930.79ms
+iter 529: loss 1.4100 time 1759.52ms
+iter 530: loss 1.3730 time 1692.07ms
+save check point to out: iter 530 loss 1.3730 loss_val 1.6418
+iter 531: loss 1.3206 time 2727.99ms
+iter 532: loss 1.3912 time 1500.11ms
+iter 533: loss 1.3481 time 1541.44ms
+iter 534: loss 1.4356 time 1674.48ms
+iter 535: loss 1.4219 time 1578.00ms
+iter 536: loss 1.3740 time 1532.31ms
+iter 537: loss 1.5044 time 1734.57ms
+iter 538: loss 1.4367 time 1687.23ms
+iter 539: loss 1.4670 time 1451.89ms
+iter 540: loss 1.4636 time 1547.39ms
+save check point to out: iter 540 loss 1.4636 loss_val 1.6183
+iter 541: loss 1.4728 time 3272.41ms
+iter 542: loss 1.4122 time 1982.70ms
+iter 543: loss 1.4101 time 2299.65ms
+iter 544: loss 1.3286 time 1862.09ms
+iter 545: loss 1.4352 time 1587.57ms
+iter 546: loss 1.2841 time 1526.53ms
+iter 547: loss 1.4726 time 1568.33ms
+iter 548: loss 1.4990 time 1533.20ms
+iter 549: loss 1.3393 time 1563.94ms
+iter 550: loss 1.3658 time 1532.07ms
+save check point to out: iter 550 loss 1.3658 loss_val 1.6179
+iter 551: loss 1.3641 time 2376.07ms
+iter 552: loss 1.4277 time 1455.33ms
+iter 553: loss 1.2868 time 1500.70ms
+iter 554: loss 1.4718 time 1512.34ms
+iter 555: loss 1.4364 time 1498.03ms
+iter 556: loss 1.2842 time 1485.96ms
+iter 557: loss 1.4091 time 1524.89ms
+iter 558: loss 1.5402 time 1493.75ms
+iter 559: loss 1.5130 time 1493.58ms
+iter 560: loss 1.3986 time 1511.14ms
+save check point to out: iter 560 loss 1.3986 loss_val 1.6192
+iter 561: loss 1.4888 time 2376.66ms
+iter 562: loss 1.3802 time 1512.86ms
+iter 563: loss 1.3994 time 1493.05ms
+iter 564: loss 1.3456 time 1471.93ms
+iter 565: loss 1.4492 time 1523.58ms
+iter 566: loss 1.4644 time 1489.08ms
+iter 567: loss 1.5081 time 1474.45ms
+iter 568: loss 1.2998 time 1470.20ms
+iter 569: loss 1.3459 time 1445.27ms
+iter 570: loss 1.3360 time 1491.88ms
+save check point to out: iter 570 loss 1.3360 loss_val 1.6280
+iter 571: loss 1.4742 time 2322.87ms
+iter 572: loss 1.3068 time 1496.80ms
+iter 573: loss 1.3815 time 1514.44ms
+iter 574: loss 1.5163 time 1491.94ms
+iter 575: loss 1.5735 time 2104.89ms
+iter 576: loss 1.4864 time 2074.34ms
+iter 577: loss 1.3755 time 1623.77ms
+iter 578: loss 1.4269 time 1693.50ms
+iter 579: loss 1.4708 time 1689.21ms
+iter 580: loss 1.3755 time 1447.49ms
+save check point to out: iter 580 loss 1.3755 loss_val 1.6359
+iter 581: loss 1.5298 time 2279.16ms
+iter 582: loss 1.4662 time 1469.31ms
+iter 583: loss 1.4301 time 1473.08ms
+iter 584: loss 1.3885 time 1477.59ms
+iter 585: loss 1.3648 time 1789.23ms
+iter 586: loss 1.4766 time 1838.29ms
+iter 587: loss 1.3693 time 1528.66ms
+iter 588: loss 1.3898 time 1572.54ms
+iter 589: loss 1.3468 time 1785.34ms
+iter 590: loss 1.4783 time 1519.28ms
+save check point to out: iter 590 loss 1.4783 loss_val 1.6087
+iter 591: loss 1.4662 time 2458.86ms
+iter 592: loss 1.3190 time 1544.72ms
+iter 593: loss 1.3768 time 1679.73ms
+iter 594: loss 1.4126 time 1533.05ms
+iter 595: loss 1.3332 time 1722.10ms
+iter 596: loss 1.4254 time 1518.68ms
+iter 597: loss 1.5068 time 1550.20ms
+iter 598: loss 1.4497 time 1742.29ms
+iter 599: loss 1.3465 time 1573.03ms
+iter 600: loss 1.4108 time 1566.11ms
+save check point to out: iter 600 loss 1.4108 loss_val 1.6177
+iter 601: loss 1.2726 time 2389.01ms
+iter 602: loss 1.4188 time 1672.12ms
+iter 603: loss 1.3764 time 1499.61ms
+iter 604: loss 1.4911 time 1640.20ms
+iter 605: loss 1.4583 time 1560.64ms
+iter 606: loss 1.3783 time 1659.51ms
+iter 607: loss 1.4835 time 1659.11ms
+iter 608: loss 1.4882 time 1575.22ms
+iter 609: loss 1.5022 time 1459.83ms
+iter 610: loss 1.3712 time 1498.66ms
+save check point to out: iter 610 loss 1.3712 loss_val 1.6285
+iter 611: loss 1.3208 time 2406.61ms
+iter 612: loss 1.4946 time 1630.86ms
+iter 613: loss 1.3918 time 1581.28ms
+iter 614: loss 1.4122 time 1497.26ms
+iter 615: loss 1.3650 time 1473.83ms
+iter 616: loss 1.4108 time 1562.88ms
+iter 617: loss 1.3259 time 1502.84ms
+iter 618: loss 1.3591 time 1601.33ms
+iter 619: loss 1.3937 time 1559.77ms
+iter 620: loss 1.3546 time 1592.04ms
+save check point to out: iter 620 loss 1.3546 loss_val 1.6033
+iter 621: loss 1.4415 time 2452.05ms
+iter 622: loss 1.3506 time 1556.91ms
+iter 623: loss 1.4553 time 1495.73ms
+iter 624: loss 1.2831 time 1476.31ms
+iter 625: loss 1.3541 time 1525.64ms
+iter 626: loss 1.3145 time 1552.33ms
+iter 627: loss 1.4853 time 1616.50ms
+iter 628: loss 1.4359 time 1556.07ms
+iter 629: loss 1.3894 time 1677.74ms
+iter 630: loss 1.4335 time 1571.91ms
+save check point to out: iter 630 loss 1.4335 loss_val 1.6017
+iter 631: loss 1.3147 time 2485.18ms
+iter 632: loss 1.3043 time 1507.22ms
+iter 633: loss 1.4410 time 1542.26ms
+iter 634: loss 1.4425 time 1574.57ms
+iter 635: loss 1.3768 time 1550.71ms
+iter 636: loss 1.4982 time 1486.47ms
+iter 637: loss 1.3850 time 1547.27ms
+iter 638: loss 1.3587 time 1549.17ms
+iter 639: loss 1.3343 time 1508.62ms
+iter 640: loss 1.4099 time 1693.10ms
+save check point to out: iter 640 loss 1.4099 loss_val 1.6083
+iter 641: loss 1.4098 time 2587.93ms
+iter 642: loss 1.4450 time 1556.02ms
+iter 643: loss 1.4492 time 1566.26ms
+iter 644: loss 1.3892 time 1623.50ms
+iter 645: loss 1.3481 time 1577.38ms
+iter 646: loss 1.2759 time 1524.85ms
+iter 647: loss 1.3924 time 1696.00ms
+iter 648: loss 1.4163 time 1528.71ms
+iter 649: loss 1.2928 time 1487.33ms
+iter 650: loss 1.4505 time 1752.82ms
+save check point to out: iter 650 loss 1.4505 loss_val 1.6028
+iter 651: loss 1.3009 time 2464.54ms
+iter 652: loss 1.3919 time 1752.68ms
+iter 653: loss 1.2557 time 1535.26ms
+iter 654: loss 1.3781 time 1718.15ms
+iter 655: loss 1.3602 time 1560.40ms
+iter 656: loss 1.5196 time 1598.16ms
+iter 657: loss 1.2843 time 1628.01ms
+iter 658: loss 1.2981 time 1612.27ms
+iter 659: loss 1.2788 time 1623.41ms
+iter 660: loss 1.3888 time 1528.05ms
+save check point to out: iter 660 loss 1.3888 loss_val 1.5874
+iter 661: loss 1.3436 time 2396.03ms
+iter 662: loss 1.3775 time 1526.42ms
+iter 663: loss 1.3678 time 1583.76ms
+iter 664: loss 1.4847 time 1533.69ms
+iter 665: loss 1.3493 time 1575.36ms
+iter 666: loss 1.3257 time 1608.96ms
+iter 667: loss 1.4128 time 1563.02ms
+iter 668: loss 1.3149 time 1616.36ms
+iter 669: loss 1.4419 time 1800.69ms
+iter 670: loss 1.4357 time 1552.28ms
+save check point to out: iter 670 loss 1.4357 loss_val 1.5994
+iter 671: loss 1.3302 time 2349.94ms
+iter 672: loss 1.3989 time 1449.56ms
+iter 673: loss 1.4747 time 1513.52ms
+iter 674: loss 1.3677 time 1513.41ms
+iter 675: loss 1.3877 time 1501.96ms
+iter 676: loss 1.3505 time 1568.61ms
+iter 677: loss 1.3480 time 1558.83ms
+iter 678: loss 1.4339 time 1564.79ms
+iter 679: loss 1.3634 time 1543.51ms
+iter 680: loss 1.3218 time 1611.81ms
+save check point to out: iter 680 loss 1.3218 loss_val 1.5773
+iter 681: loss 1.3431 time 2431.62ms
+iter 682: loss 1.5025 time 1503.34ms
+iter 683: loss 1.3191 time 1497.11ms
+iter 684: loss 1.3783 time 1525.43ms
+iter 685: loss 1.3457 time 1527.95ms
+iter 686: loss 1.4039 time 1507.73ms
+iter 687: loss 1.3774 time 1504.16ms
+iter 688: loss 1.3472 time 1593.41ms
+iter 689: loss 1.4127 time 1506.32ms
+iter 690: loss 1.3175 time 1529.67ms
+save check point to out: iter 690 loss 1.3175 loss_val 1.5706
+iter 691: loss 1.3143 time 2648.66ms
+iter 692: loss 1.3284 time 1578.14ms
+iter 693: loss 1.3188 time 1748.21ms
+iter 694: loss 1.4462 time 1568.87ms
+iter 695: loss 1.3488 time 1462.53ms
+iter 696: loss 1.2628 time 1467.03ms
+iter 697: loss 1.3707 time 1542.98ms
+iter 698: loss 1.2577 time 1494.73ms
+iter 699: loss 1.4272 time 2033.76ms
+iter 700: loss 1.2620 time 2142.85ms
+save check point to out: iter 700 loss 1.2620 loss_val 1.5772
+iter 701: loss 1.3667 time 3319.80ms
+iter 702: loss 1.3684 time 1676.69ms
+iter 703: loss 1.3540 time 1610.35ms
+iter 704: loss 1.3531 time 1696.76ms
+iter 705: loss 1.4365 time 1589.68ms
+iter 706: loss 1.4469 time 1723.61ms
+iter 707: loss 1.3343 time 1479.53ms
+iter 708: loss 1.3410 time 1984.40ms
+iter 709: loss 1.4182 time 1845.20ms
+iter 710: loss 1.4121 time 1503.25ms
+save check point to out: iter 710 loss 1.4121 loss_val 1.5968
+iter 711: loss 1.3101 time 2390.23ms
+iter 712: loss 1.2888 time 1625.51ms
+iter 713: loss 1.3751 time 1697.11ms
+iter 714: loss 1.3605 time 1588.19ms
+iter 715: loss 1.3102 time 1637.74ms
+iter 716: loss 1.4168 time 1634.97ms
+iter 717: loss 1.2837 time 1884.34ms
+iter 718: loss 1.3477 time 2177.49ms
+iter 719: loss 1.3751 time 1534.59ms
+iter 720: loss 1.4228 time 1860.31ms
+save check point to out: iter 720 loss 1.4228 loss_val 1.5900
+iter 721: loss 1.3390 time 2786.74ms
+iter 722: loss 1.3217 time 1751.12ms
+iter 723: loss 1.4157 time 1504.97ms
+iter 724: loss 1.3824 time 1510.07ms
+iter 725: loss 1.3723 time 1500.37ms
+iter 726: loss 1.4019 time 1498.63ms
+iter 727: loss 1.2585 time 1542.76ms
+iter 728: loss 1.3188 time 1538.00ms
+iter 729: loss 1.3625 time 1507.26ms
+iter 730: loss 1.4605 time 1500.96ms
+save check point to out: iter 730 loss 1.4605 loss_val 1.5957
+iter 731: loss 1.3271 time 2355.88ms
+iter 732: loss 1.3941 time 1512.39ms
+iter 733: loss 1.3850 time 1519.44ms
+iter 734: loss 1.3924 time 1536.83ms
+iter 735: loss 1.3422 time 1528.98ms
+iter 736: loss 1.3242 time 1496.66ms
+iter 737: loss 1.3513 time 1454.50ms
+iter 738: loss 1.3594 time 1484.55ms
+iter 739: loss 1.3187 time 1478.85ms
+iter 740: loss 1.3649 time 1454.01ms
+save check point to out: iter 740 loss 1.3649 loss_val 1.6054
+iter 741: loss 1.3982 time 2332.55ms
+iter 742: loss 1.3992 time 1529.42ms
+iter 743: loss 1.4265 time 1495.26ms
+iter 744: loss 1.3085 time 1511.01ms
+iter 745: loss 1.3780 time 1487.68ms
+iter 746: loss 1.3633 time 1452.35ms
+iter 747: loss 1.3463 time 1519.63ms
+iter 748: loss 1.2135 time 1498.56ms
+iter 749: loss 1.2815 time 1505.69ms
+iter 750: loss 1.4591 time 1488.90ms
+save check point to out: iter 750 loss 1.4591 loss_val 1.6072
+iter 751: loss 1.3701 time 2397.71ms
+iter 752: loss 1.3606 time 1558.13ms
+iter 753: loss 1.3795 time 1499.08ms
+iter 754: loss 1.2927 time 1517.44ms
+iter 755: loss 1.3654 time 1522.36ms
+iter 756: loss 1.2765 time 1515.63ms
+iter 757: loss 1.2942 time 1521.48ms
+iter 758: loss 1.3171 time 1505.81ms
+iter 759: loss 1.4146 time 1507.27ms
+iter 760: loss 1.3031 time 1481.71ms
+save check point to out: iter 760 loss 1.3031 loss_val 1.6053
+iter 761: loss 1.4950 time 2336.88ms
+iter 762: loss 1.3469 time 1504.41ms
+iter 763: loss 1.3451 time 1468.44ms
+iter 764: loss 1.3435 time 1499.75ms
+iter 765: loss 1.3919 time 1501.15ms
+iter 766: loss 1.3561 time 1512.99ms
+iter 767: loss 1.4764 time 1535.16ms
+iter 768: loss 1.3324 time 1485.64ms
+iter 769: loss 1.3906 time 1470.92ms
+iter 770: loss 1.3539 time 1494.97ms
+save check point to out: iter 770 loss 1.3539 loss_val 1.5796
+iter 771: loss 1.2725 time 2314.13ms
+iter 772: loss 1.3227 time 1519.70ms
+iter 773: loss 1.2971 time 1492.60ms
+iter 774: loss 1.4118 time 1510.24ms
+iter 775: loss 1.3881 time 1474.62ms
+iter 776: loss 1.3938 time 1515.02ms
+iter 777: loss 1.2404 time 1520.77ms
+iter 778: loss 1.2274 time 1479.64ms
+iter 779: loss 1.4106 time 1484.49ms
+iter 780: loss 1.4577 time 1499.08ms
+save check point to out: iter 780 loss 1.4577 loss_val 1.6267
+iter 781: loss 1.3721 time 2387.92ms
+iter 782: loss 1.2612 time 1492.64ms
+iter 783: loss 1.4204 time 1517.54ms
+iter 784: loss 1.2220 time 1498.59ms
+iter 785: loss 1.2843 time 1536.41ms
+iter 786: loss 1.3412 time 1519.55ms
+iter 787: loss 1.5146 time 1549.78ms
+iter 788: loss 1.3227 time 1571.90ms
+iter 789: loss 1.2883 time 1561.47ms
+iter 790: loss 1.4049 time 1548.54ms
+save check point to out: iter 790 loss 1.4049 loss_val 1.5786
+iter 791: loss 1.3374 time 2366.88ms
+iter 792: loss 1.4536 time 1494.61ms
+iter 793: loss 1.3421 time 1528.36ms
+iter 794: loss 1.3588 time 1512.59ms
+iter 795: loss 1.3579 time 1497.36ms
+iter 796: loss 1.3159 time 1532.74ms
+iter 797: loss 1.3500 time 1608.79ms
+iter 798: loss 1.3476 time 1632.83ms
+iter 799: loss 1.3238 time 1759.27ms
+iter 800: loss 1.2656 time 1626.42ms
+save check point to out: iter 800 loss 1.2656 loss_val 1.5732
+iter 801: loss 1.3998 time 2574.87ms
+iter 802: loss 1.3488 time 1726.89ms
+iter 803: loss 1.2172 time 1608.71ms
+iter 804: loss 1.3755 time 1727.97ms
+iter 805: loss 1.3066 time 1492.81ms
+iter 806: loss 1.3258 time 1865.38ms
+iter 807: loss 1.3892 time 1942.68ms
+iter 808: loss 1.3927 time 2407.44ms
+iter 809: loss 1.3543 time 1882.20ms
+iter 810: loss 1.2764 time 1821.16ms
+save check point to out: iter 810 loss 1.2764 loss_val 1.5751
+iter 811: loss 1.3674 time 2830.06ms
+iter 812: loss 1.2414 time 1782.97ms
+iter 813: loss 1.3149 time 1832.89ms
+iter 814: loss 1.2744 time 2231.19ms
+iter 815: loss 1.4608 time 1974.48ms
+iter 816: loss 1.5254 time 2142.73ms
+iter 817: loss 1.2900 time 2017.60ms
+iter 818: loss 1.3393 time 2008.55ms
+iter 819: loss 1.3919 time 1982.89ms
+iter 820: loss 1.2673 time 1771.58ms
+save check point to out: iter 820 loss 1.2673 loss_val 1.5738
+iter 821: loss 1.3238 time 3591.58ms
+iter 822: loss 1.3787 time 2002.15ms
+iter 823: loss 1.4034 time 2518.68ms
+Traceback (most recent call last):
+  File "/Users/xiaom/Documents/Projects/MyGPT/train.py", line 19, in <module>
+    train(model, train_config, dataset)
+  File "/Users/xiaom/Documents/Projects/MyGPT/trainer.py", line 54, in train
+    loss.backward()
+  File "/Users/xiaom/Programs/miniconda3/envs/py3-11/lib/python3.11/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/Users/xiaom/Programs/miniconda3/envs/py3-11/lib/python3.11/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

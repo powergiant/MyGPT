@@ -14,7 +14,6 @@ class ConfigType(Enum):
     BlockConfig = 3
     GPTConfig = 4
 
-
 def new_gelu(x):
     """
     Implementation of the GELU activation function currently in Google BERT repo (identical to OpenAI GPT).
@@ -53,10 +52,10 @@ class SelfAttention(nn.Module):
         self.if_bias = config.if_bias
         self.if_flash = config.if_flash
 
-        self.attention_qkv = nn.Linear(self.n_embd, self.n_embd*3, bias=self.if_bias)
+        self.attention_qkv = nn.Linear(self.n_embd, self.n_embd*3, bias = self.if_bias)
 
     def forward(self, input: torch.Tensor) -> torch.Tensor: 
-        """Todo"""
+        """(n_batch, n_seq, n_embd) -> (n_batch, n_seq, n_embd)"""
         # input.size() = (n_batch, n_seq, n_embd)
         assert len(input.size()) == 3
         B, T, C = input.size() # batch size, sequence length n_seq (not confused with the n_blocksize), embedding dimensionality (n_embd)
@@ -77,13 +76,13 @@ class SelfAttention(nn.Module):
 
         if self.if_flash:
             # efficient attention using Flash Attention CUDA kernels
-            result = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=None, is_causal=True)
+            result = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask = None, is_causal = True)
         else:
             # manual implementation of attention
             att = q@(k.transpose(-1,-2))/math.sqrt(C//self.n_head)
             # k.transpose().size() = (n_batch, n_head, n_embd/n_head, n_blocksize)
             # att.size() = (n_batch, n_head, n_blocksize, n_blocksize)
-            mask = torch.triu(torch.full((T, T), - float('inf')), diagonal = 1)
+            mask = torch.triu(torch.full((T, T), - float('inf'), device = input.device), diagonal = 1)
             att = att + mask.unsqueeze(0).unsqueeze(0) # replace the upper triangle part of att by infinity
             att = F.softmax(att, dim = -1)
             result = att@v
@@ -107,7 +106,7 @@ class FeedForward(nn.Module):
         self.layer_2 = nn.Linear(4*self.n_embd, self.n_embd, bias = self.if_bias) 
 
     def forward(self, input: torch.Tensor) -> torch.Tensor:
-        """Todo"""
+        """(n_batch, n_seq, n_embd) -> (n_batch, n_seq, n_embd)"""
         assert input.size(-1) == self.n_embd
         # input.size() = (n_batch, n_blocksize, n_embd)
         # forward is position-wise and only acts on the embedding dimension
@@ -115,6 +114,7 @@ class FeedForward(nn.Module):
         # result.size() = (n_batch, n_blocksize, 4*n_embd)
         result = new_gelu(result)
         result = self.layer_2(result) 
+        # result.size() = (n_batch, n_blocksize, n_embd)
         return result
 
 
@@ -141,7 +141,7 @@ class Block(nn.Module):
         self.ln = LayerNorm(config.n_embd, config.if_bias) # if layer normalization has weights, you need include two layer norms
 
     def forward(self, input: torch.Tensor) -> torch.Tensor:
-        """Todo"""
+        """(n_batch, n_seq, n_embd) -> (n_batch, n_seq, n_embd)"""
         # input.size() = (n_batch, n_blocksize, n_embd)
         result = input + self.att(self.ln(input))
         result = result + self.ffn(self.ln(result))
@@ -190,7 +190,7 @@ class GPT(nn.Module):
                 torch.nn.init.normal_(module.weight, mean = 0.0, std = 0.02)
     
     def forward(self, input: torch.Tensor, target: torch.Tensor|None = None) -> torch.Tensor|tuple[torch.Tensor, torch.Tensor]:
-        """Todo"""
+        """(n_batch, n_seq) -> (n_batch, 1, vocab_size), scaler"""
         # An example input of input is torch.tensor([[11, 23],[5, 8]]), the integers represent words or chars
         # The first dimension is the batch, the second dimension is the length of each sequence
         # input.size() = target.size() = (n_batch, n_seq)
@@ -228,6 +228,7 @@ class GPT(nn.Module):
 
     @torch.no_grad()
     def generate(self, input: torch.Tensor, max_new_tokens: int, temperature: float = 1.0, topk: int| None = None):
+        """(n_batch, n_seq) -> (n_batch, n_seq + n_seq_new)"""
         # input.size() = (n_batch, n_seq)
         output = input
         for _ in range(max_new_tokens):
@@ -240,9 +241,9 @@ class GPT(nn.Module):
             # logits.size() = (n_batch, n_vocabsize)
 
             if topk is not None:
-                topk, _ = torch.topk(logits, min(topk, logits.size(-1)))
+                word_topk, _ = torch.topk(logits, min(topk, logits.size(-1)))
                 # topk.size() = (n_batch, k)
-                logits[logits < topk[:, [-1]]] = - float('inf')
+                logits[logits < word_topk[:, [-1]]] = - float('inf')
                 # logits.size() = (n_batch, n_vocabsize)
             
             probs = F.softmax(logits)
@@ -250,6 +251,7 @@ class GPT(nn.Module):
             word_next = torch.multinomial(probs, num_samples = 1)
             # word_next.size() = (n_batch, 1)
             output = torch.cat((output, word_next), dim = -1)
+            # word_next.size() = (n_batch, n_seq + 1)
 
         return output
     

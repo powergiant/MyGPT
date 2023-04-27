@@ -1,5 +1,6 @@
-from trainer import *
-from model import *
+from trainer import train, TrainConfig
+from model import GPT
+from dataset import Dataset
 from config import train_shakespeare_char
 
 train_config: TrainConfig = train_shakespeare_char.train_config

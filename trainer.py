@@ -1,4 +1,6 @@
-from model import *
+from model import GPT
+from dataclasses import dataclass
+import torch
 import math
 import time
 from dataset import Dataset, DataType
@@ -22,13 +24,13 @@ class TrainConfig:
     log_interval: int
     check_point_interval: int
     out_dir: str
-
     
 
 def train(model: GPT, train_config: TrainConfig, dataset: Dataset, model_history: list = []):
     
     optimizer = model.config_optimizer(train_config.learning_rate, train_config.weight_decay, (train_config.beta1, train_config.beta2), train_config.device)
     model.train()
+    model.to(train_config.device)
     it = 0
 
     t_last = time.time()
@@ -105,10 +107,12 @@ def get_lr(it: int, train_config: TrainConfig):
 def get_loss_val(model: GPT, dataset: Dataset, train_config: TrainConfig):
     loss_val = 0
     gradient_accumulation_steps = train_config.n_batch//train_config.n_minibatch
+    model.eval() # change to eval to handle the possibly present dropout
 
     for _ in range(gradient_accumulation_steps):
         input_val, target_val = dataset.get_batch(model.n_blocksize, train_config.n_minibatch, DataType.ValData, device = train_config.device)
         logits, loss = model.forward(input_val, target_val)
         loss_val += loss/gradient_accumulation_steps
 
+    model.train()
     return loss_val
