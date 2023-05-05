@@ -28,3 +28,5 @@ conda install -y python=3.10
 pip install -q torch
 pip install -q numpy
 sudo apt-get install -q vim
+cd ..
+cd MyGPT

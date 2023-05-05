@@ -38,6 +38,7 @@ class SelfAttentionConfig:
     n_head: int
     n_embd: int
     n_blocksize: int
+    dropout_rate: float
     if_bias: bool = False
     if_flash: bool = False
 
@@ -53,6 +54,11 @@ class SelfAttention(nn.Module):
         self.if_flash = config.if_flash
 
         self.attention_qkv = nn.Linear(self.n_embd, self.n_embd*3, bias = self.if_bias)
+
+        self.dropout_rate = config.dropout_rate
+        self.dropout_att = nn.Dropout(config.dropout_rate)
+        self.dropout_proj = nn.Dropout(config.dropout_rate)
+        self.proj = nn.Linear(self.n_embd, self.n_embd, bias = self.if_bias)
 
     def forward(self, input: torch.Tensor) -> torch.Tensor: 
         """(n_batch, n_seq, n_embd) -> (n_batch, n_seq, n_embd)"""
@@ -76,25 +82,30 @@ class SelfAttention(nn.Module):
 
         if self.if_flash:
             # efficient attention using Flash Attention CUDA kernels
-            result = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask = None, is_causal = True)
+            result = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask = None, dropout_p = self.dropout_rate if self.training else 0, is_causal=True)
         else:
             # manual implementation of attention
             att = q@(k.transpose(-1,-2))/math.sqrt(C//self.n_head)
+            print(att)
             # k.transpose().size() = (n_batch, n_head, n_embd/n_head, n_blocksize)
             # att.size() = (n_batch, n_head, n_blocksize, n_blocksize)
             mask = torch.triu(torch.full((T, T), - float('inf'), device = input.device), diagonal = 1)
             att = att + mask.unsqueeze(0).unsqueeze(0) # replace the upper triangle part of att by infinity
             att = F.softmax(att, dim = -1)
+            att = self.dropout_att(att)
             result = att@v
             # result.size() = (n_batch, n_head, n_blocksize, n_embd/n_head)
+        result: torch.Tensor
         result = result.transpose(1,2).contiguous().view(B, T, C)
         # result.transpose(1,2).size() = (n_batch, n_blocksize, n_head, n_embd/n_head)
         # result.size() = (n_batch, n_blocksize, n_embd)
+        result = self.dropout_proj(self.proj(result))
         return result
 
 @dataclass
 class FeedForwardConfig:
     n_embd: int
+    dropout_rate: float
     if_bias: bool = False
 
 class FeedForward(nn.Module):
@@ -104,6 +115,9 @@ class FeedForward(nn.Module):
         self.if_bias = config.if_bias
         self.layer_1 = nn.Linear(self.n_embd, 4*self.n_embd, bias = self.if_bias) 
         self.layer_2 = nn.Linear(4*self.n_embd, self.n_embd, bias = self.if_bias) 
+        
+        self.dropout_rate = config.dropout_rate
+        self.dropout = nn.Dropout(self.dropout_rate)
 
     def forward(self, input: torch.Tensor) -> torch.Tensor:
         """(n_batch, n_seq, n_embd) -> (n_batch, n_seq, n_embd)"""
@@ -115,6 +129,7 @@ class FeedForward(nn.Module):
         result = new_gelu(result)
         result = self.layer_2(result) 
         # result.size() = (n_batch, n_blocksize, n_embd)
+        result = self.dropout(result)
         return result
 
 
@@ -123,6 +138,7 @@ class BlockConfig:
     n_head: int
     n_embd: int
     n_blocksize: int
+    dropout_rate: float
     if_bias: bool = False
     if_flash: bool = False
 
@@ -155,6 +171,7 @@ class GPTConfig:
     n_blocksize: int
     n_vocabsize: int
     n_layers: int
+    dropout_rate: float
     if_bias: bool = False
     if_flash: bool = False
 
@@ -167,12 +184,14 @@ class GPT(nn.Module):
         self.n_vocabsize = config.n_vocabsize
         self.n_embd = config.n_embd
         self.if_bias = config.if_bias
+        self.dropout_rate = config.dropout_rate
 
         self.wte = nn.Embedding(self.n_vocabsize, self.n_embd)
         self.wpe = nn.Embedding(self.n_blocksize, self.n_embd)
         self.blocks = nn.ModuleList([Block(ConfigTransform(config, ConfigType.BlockConfig)) for _ in range(self.n_layers)])
         self.ln_f = LayerNorm(self.n_embd, bias = self.if_bias)
         self.l_out = nn.Linear(self.n_embd, self.n_vocabsize, bias=False)
+        self.dropout = nn.Dropout(self.dropout_rate)
         # self.layers = nn.ModuleDict(dict(wte = self.wte, wpe = self.wpe, blocks = self.blocks, ln_f = self.ln_f, l_out = self.l_out))
 
         # weights tying https://paperswithcode.com/method/weight-tying
@@ -205,7 +224,7 @@ class GPT(nn.Module):
         # tok_embd.size() = (n_batch, n_seq, n_embd)
         pos_embd = self.wpe(pos)
         # pos_embd.size() = (1, n_seq, n_embd)
-        embd = tok_embd + pos_embd
+        embd = self.dropout(tok_embd + pos_embd)
         # embd.size() = (n_batch, n_seq, n_embd)
 
         for block in self.blocks:
@@ -300,8 +319,8 @@ def ConfigTransform(config: Union[SelfAttentionConfig, FeedForwardConfig, BlockC
                     return config
                 case FeedForwardConfig():
                     raise TypeError('Can convert FeedForwardConfig to SelfAttentionConfig')
-                case BlockConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash):
-                    return SelfAttentionConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash)
+                case BlockConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash, dropout_rate = dropout_rate):
+                    return SelfAttentionConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash, dropout_rate = dropout_rate)
                 case GPTConfig():
                     raise NotImplementedError
         case ConfigType.FeedForwardConfig:
@@ -310,8 +329,8 @@ def ConfigTransform(config: Union[SelfAttentionConfig, FeedForwardConfig, BlockC
                     raise NotImplementedError
                 case FeedForwardConfig():
                     raise NotImplementedError
-                case BlockConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash):
-                    return FeedForwardConfig(n_embd = n_embd, if_bias = if_bias)
+                case BlockConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash, dropout_rate = dropout_rate):
+                    return FeedForwardConfig(n_embd = n_embd, if_bias = if_bias, dropout_rate = dropout_rate)
                 case GPTConfig():
                     raise NotImplementedError
         case ConfigType.BlockConfig:
@@ -322,8 +341,8 @@ def ConfigTransform(config: Union[SelfAttentionConfig, FeedForwardConfig, BlockC
                     raise NotImplementedError
                 case BlockConfig():
                     raise NotImplementedError
-                case GPTConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, n_vocabsize = n_vocabsize, n_layers=n_layers,  if_bias = if_bias, if_flash = if_flash):
-                    return BlockConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash)
+                case GPTConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, n_vocabsize = n_vocabsize, n_layers=n_layers,  if_bias = if_bias, if_flash = if_flash, dropout_rate = dropout_rate):
+                    return BlockConfig(n_head = n_head, n_embd = n_embd, n_blocksize = n_blocksize, if_bias = if_bias, if_flash = if_flash, dropout_rate = dropout_rate)
         case ConfigType.GPTConfig:
             match config:
                 case SelfAttentionConfig():

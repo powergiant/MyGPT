@@ -15,6 +15,14 @@ model = GPT(model_config)
 
 # load history
 
+# print experiment config
+print("Train config:")
+print(train_config.__dict__)
+print("Model config:")
+print(model_config.__dict__)
+print("Dataset config:")
+print({"path_data": path_data, "dataset_name": dataset_name})
+
 # train
 train(model, train_config, dataset)
 

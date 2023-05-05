@@ -35,8 +35,8 @@ meta_vocab_size = meta['vocab_size']
 
 
 
-model_config = GPTConfig(n_head = 6, n_embd = 384, n_blocksize = 256, n_vocabsize = meta_vocab_size, n_layers = 6)
-# model_config = GPTConfig(n_head = 4, n_embd = 128, n_blocksize = 64, n_vocabsize = meta_vocab_size, n_layers = 4)
+model_config = GPTConfig(n_head = 6, n_embd = 384, n_blocksize = 256, n_vocabsize = meta_vocab_size, n_layers = 6, dropout_rate = 0.2)
+# model_config = GPTConfig(n_head = 4, n_embd = 128, n_blocksize = 64, n_vocabsize = meta_vocab_size, n_layers = 4, dropout_rate = 0.2)
 
 
 

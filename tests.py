@@ -4,8 +4,10 @@
 
 from model import GPTConfig
 
-config = GPTConfig(3, 100, 100, 10, 3)
-list = [1, 2, 3]
-match config:
-    case GPTConfig(x, _):
-        print(x)
+config = GPTConfig(3, 100, 100, 10, 3, 0.2)
+
+# match config:
+#     case GPTConfig(x):
+#         print(x)
+
+print(config.__dict__)
