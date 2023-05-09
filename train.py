@@ -1,16 +1,16 @@
 from trainer import train, TrainConfig
 from model import GPT
 from dataset import Dataset
-from config import train_shakespeare_char
+import config
 
-train_config: TrainConfig = train_shakespeare_char.train_config
-path_data: str = train_shakespeare_char.path_data
-dataset_name: str = train_shakespeare_char.dataset_name
+train_config: TrainConfig = config.train_config
+path_data: str = config.path_data
+dataset_name: str = config.dataset_name
 
 
 dataset = Dataset(path_data = path_data, dataset_name = dataset_name)
 
-model_config = train_shakespeare_char.model_config
+model_config = config.model_config
 model = GPT(model_config)
 
 # load history

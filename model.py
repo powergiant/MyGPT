@@ -86,7 +86,6 @@ class SelfAttention(nn.Module):
         else:
             # manual implementation of attention
             att = q@(k.transpose(-1,-2))/math.sqrt(C//self.n_head)
-            print(att)
             # k.transpose().size() = (n_batch, n_head, n_embd/n_head, n_blocksize)
             # att.size() = (n_batch, n_head, n_blocksize, n_blocksize)
             mask = torch.triu(torch.full((T, T), - float('inf'), device = input.device), diagonal = 1)

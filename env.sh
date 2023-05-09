@@ -25,6 +25,9 @@ exec bash
 conda create -y -n py3-10
 conda activate py3-10
 conda install -y python=3.10
+
+
+# no deepspeed
 pip install -q torch
 pip install -q numpy
 sudo apt-get install -q vim
