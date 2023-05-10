@@ -3,6 +3,10 @@ from model import GPT
 from dataset import Dataset
 import config
 
+import torch
+torch.manual_seed(1337)
+torch.cuda.manual_seed(1337)
+
 train_config: TrainConfig = config.train_config
 path_data: str = config.path_data
 dataset_name: str = config.dataset_name

@@ -33,3 +33,7 @@ pip install -q numpy
 sudo apt-get install -q vim
 cd ..
 cd MyGPT
+
+# install huggingface
+
+# install deepspeed

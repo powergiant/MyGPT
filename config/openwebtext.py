@@ -4,7 +4,7 @@ from torch import device
 import os
 import pickle
 from sampler import SampleConfig
-from data.shakespeare_char.meta import meta_vocab_size, encode_func, decode_func
+from data.openwebtext.meta import meta_vocab_size, encode_func, decode_func
 
 my_device = device('cpu')
 # my_device = device('cuda')
@@ -23,7 +23,7 @@ train_config = TrainConfig(learning_rate = 1e-3, weight_decay = 0.1, beta1 = 0.9
 
 
 path_data = 'data'
-dataset_name = 'shakespeare_char'
+dataset_name = 'openwebtext'
 
 path = os.path.join(path_data, dataset_name)
 

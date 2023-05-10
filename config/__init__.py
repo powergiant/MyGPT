@@ -11,6 +11,6 @@ match config_name:
     case ConfigName.train_shakespeare_char:
         from .train_shakespeare_char import *
     case ConfigName.openwebtext:
-        raise NotImplementedError
+        from .openwebtext import *
     case ConfigName.wikipedia:
         raise NotImplementedError
