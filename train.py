@@ -1,4 +1,5 @@
-from trainer import train, TrainConfig
+from trainer import TrainConfig
+import trainer, trainer_ddp
 from model import GPT
 from dataset import Dataset
 import config
@@ -10,7 +11,6 @@ torch.cuda.manual_seed(1337)
 train_config: TrainConfig = config.train_config
 path_data: str = config.path_data
 dataset_name: str = config.dataset_name
-
 
 dataset = Dataset(path_data = path_data, dataset_name = dataset_name)
 
@@ -28,5 +28,8 @@ print("Dataset config:")
 print({"path_data": path_data, "dataset_name": dataset_name})
 
 # train
-train(model, train_config, dataset)
+if config.if_ddp:   
+    trainer_ddp.train(model, train_config, config.ddp_config, dataset)
+else:
+    trainer.train(model, train_config, dataset)
 
