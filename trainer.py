@@ -27,6 +27,8 @@ class TrainConfig:
     
 
 def train(model: GPT, train_config: TrainConfig, dataset: Dataset, model_history: list = []):
+    torch.manual_seed(1337)
+    torch.cuda.manual_seed(1337)
     
     optimizer = model.config_optimizer(train_config.learning_rate, train_config.weight_decay, (train_config.beta1, train_config.beta2), train_config.device)
     model.train()

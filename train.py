@@ -5,8 +5,6 @@ from dataset import Dataset
 import config
 
 import torch
-torch.manual_seed(1337)
-torch.cuda.manual_seed(1337)
 
 train_config: TrainConfig = config.train_config
 path_data: str = config.path_data
@@ -29,7 +27,13 @@ print({"path_data": path_data, "dataset_name": dataset_name})
 
 # train
 if config.if_ddp:   
-    trainer_ddp.train(model, train_config, config.ddp_config, dataset)
+    if __name__ == '__main__':
+        torch.multiprocessing.spawn(
+            trainer_ddp.train,
+            args = (model, train_config, config.model_config, config.ddp_config, dataset),
+            nprocs = config.ddp_config.world_size
+        )
+        # trainer_ddp.train(model, train_config, config.ddp_config, dataset)
 else:
     trainer.train(model, train_config, dataset)
 
