@@ -15,13 +15,15 @@ def train(model, train_config: TrainConfig, ddp_config: dict, dataset: Dataset, 
     torch.distributed.init_process_group(backend='nccl')
     optimizer = model.config_optimizer(train_config.learning_rate, train_config.weight_decay, (train_config.beta1, train_config.beta2), train_config.device)
     lr_scheduler = get_lr_scheduler(optimizer, train_config)
-    model_ddp, optimizer, _, lr_scheduler =  deepspeed.initialize(model = model, optimizer = optimizer, lr_scheduler = lr_scheduler, model_parameters = optimizer.param_groups(), config = ddp_config)
+    model_ddp, optimizer, _, lr_scheduler =  deepspeed.initialize(model = model, optimizer = optimizer, lr_scheduler = lr_scheduler, model_parameters = optimizer.param_groups, config = ddp_config)
     model_ddp.train()
     it = 0
 
     t_last = time.time()
     loss_val_best = 1e9
 
+    t_now = time.time()
+    t_last = t_now
     while True:
 
         # add training history
@@ -35,10 +37,10 @@ def train(model, train_config: TrainConfig, ddp_config: dict, dataset: Dataset, 
 
         it += 1
 
-        t_now = time.time()
-        dt = t_now - t_last
-        t_last = t_now
         if it%train_config.log_interval == 0:
+            t_now = time.time()
+            dt = t_now - t_last
+            t_last = t_now
             lossf = loss.item()
             print(f"iter {it}: loss {lossf:.4f} time {dt*1000:.2f}ms")
         if it%train_config.check_point_interval == 0: 

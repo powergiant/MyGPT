@@ -60,10 +60,10 @@ def train(model: GPT, train_config: TrainConfig, dataset: Dataset, model_history
 
         it += 1
 
-        t_now = time.time()
-        dt = t_now - t_last
-        t_last = t_now
         if it%train_config.log_interval == 0:
+            t_now = time.time()
+            dt = t_now - t_last
+            t_last = t_now
             lossf = loss.item()*gradient_accumulation_steps
             print(f"iter {it}: loss {lossf:.4f} time {dt*1000:.2f}ms")
         if it%train_config.check_point_interval == 0: 

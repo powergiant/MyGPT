@@ -9,6 +9,8 @@ from data.shakespeare_char.meta import meta_vocab_size, encode_func, decode_func
 my_device = device('cpu')
 # my_device = device('cuda')
 
+if_ddp = False
+
 # train_config = TrainConfig(learning_rate = 1e-3, weight_decay = 0.1, beta1 = 0.9, 
 #                      beta2 = 0.99, device = device('cpu'), n_batch = 64, n_minibatch = 64, 
 #                      it_max = 5000, it_warmup = 100, it_learning_rate_decay = 5000, 
