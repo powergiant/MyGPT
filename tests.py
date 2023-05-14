@@ -1,18 +1,21 @@
 import torch
-# # x = torch.triu(torch.full((3, 3), float('inf')), diagonal = 1)
-# # print(x[None, :, :].size())
+from torch import nn
 
-# from model import GPTConfig
 
-# config = GPTConfig(3, 100, 100, 10, 3, 0.2)
+class Net(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.layer_1 = nn.Linear(3, 10)
+        self.layer_2 = nn.Linear(10, 10)
+        self.layer_3 = nn.Linear(10, 10)
+        self.layer_4 = nn.Linear(10, 10)
+        self.layer_5 = nn.Linear(10, 1)
 
-# # match config:
-# #     case GPTConfig(x):
-# #         print(x)
+def main(rank: int):
+    torch.manual_seed(1353 + rank*8)
+    x = torch.rand(3,3)
+    if rank == 0:
+        print(x)
 
-# print(config.__dict__)
-
-torch.manual_seed(42)
-x = torch.randn(3, 3)
-y = torch.randn(3, 3)
-print(x, y)
+if __name__ == '__main__':
+    torch.multiprocessing.spawn(main, nprocs=3)

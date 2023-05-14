@@ -5,7 +5,7 @@ class ConfigName(Enum):
     openwebtext = 2
     wikipedia = 3
 
-config_name = ConfigName.train_shakespeare_char
+config_name = ConfigName.openwebtext
 
 match config_name:
     case ConfigName.train_shakespeare_char:
