@@ -26,7 +26,7 @@ class TrainConfig:
     out_dir: str
     
 
-def train(model: GPT, train_config: TrainConfig, dataset: Dataset, model_history: list = []):
+def train(model: GPT, train_config: TrainConfig, dataset: Dataset):
     torch.manual_seed(1337)
     torch.cuda.manual_seed(1337)
     

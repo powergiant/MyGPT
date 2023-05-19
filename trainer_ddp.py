@@ -13,9 +13,12 @@ import re
 class DDPConfig:
     world_size: int
     backend: str = 'nccl'
+    if_amp: bool = False
     
 
-def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, ddp_config: DDPConfig, dataset: Dataset, model_history: list = []):
+# dataset: Dataset should be a variable but it is a global variable to save memory
+def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, ddp_config: DDPConfig):
+    from train import dataset
     torch.manual_seed(1337 + rank * 5)
     torch.cuda.manual_seed(1337 + rank * 5)
     
@@ -67,7 +70,10 @@ def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, 
                 lossf = loss.item()*gradient_accumulation_steps
                 print(f"iter {it}: loss {lossf:.4f} time {dt*1000:.2f}ms")
             if it%train_config.check_point_interval == 0: 
-                loss_val = get_loss_val(model, dataset, train_config, model_config)
+                loss_val = 0
+                step = train_config.n_batch//train_config.n_minibatch
+                for _ in range(step):
+                    loss_val += get_loss_val(model, dataset, train_config.n_minibatch, train_config, model_config)/step
                 print(f"save check point to {train_config.out_dir}: iter {it} loss {lossf:.4f} loss_val {loss_val:.4f}")
                 if loss_val < loss_val_best:
                     loss_val_best = loss_val
@@ -93,8 +99,9 @@ def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, 
 
 def set_up_ddp(rank: int, ddp_config: DDPConfig):
     os.environ['MASTER_ADDR'] = 'localhost'
-    os.environ['MASTER_PORT'] = '12355'
+    os.environ['MASTER_PORT'] = '12305'
     torch.distributed.init_process_group(ddp_config.backend, rank=rank, world_size=ddp_config.world_size)
+
 
 def get_lr_scheduler(optimizer: torch.optim.Optimizer, train_config: TrainConfig):
     def get_lr(it: int):
@@ -118,10 +125,10 @@ def get_lr_scheduler(optimizer: torch.optim.Optimizer, train_config: TrainConfig
     return lr_scheduler
 
 @torch.no_grad()
-def get_loss_val(model, dataset: Dataset, train_config: TrainConfig, model_config: GPTConfig):
+def get_loss_val(model, dataset: Dataset, n_minibatch: int, train_config: TrainConfig, model_config: GPTConfig):
     model.eval() # change to eval to handle the possibly present dropout
 
-    input_val, target_val = dataset.get_batch(model_config.n_blocksize, train_config.n_batch, DataType.ValData, device = train_config.device)
+    input_val, target_val = dataset.get_batch(model_config.n_blocksize, n_minibatch, DataType.ValData, device = train_config.device)
     logits, loss_val = model.forward(input_val, target_val)
 
     model.train()

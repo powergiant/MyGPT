@@ -6,13 +6,17 @@ import config
 
 import torch
 
-if __name__ == '__main__':
-    
-    train_config: TrainConfig = config.train_config
-    path_data: str = config.path_data
-    dataset_name: str = config.dataset_name
+train_config: TrainConfig = config.train_config
+path_data: str = config.path_data
+dataset_name: str = config.dataset_name
 
+if config.if_ddp:   
+    global dataset 
     dataset = Dataset(path_data = path_data, dataset_name = dataset_name)
+else:
+    dataset = Dataset(path_data = path_data, dataset_name = dataset_name)
+
+if __name__ == '__main__':
 
     model_config = config.model_config
     model = GPT(model_config)
@@ -31,7 +35,7 @@ if __name__ == '__main__':
     if config.if_ddp:   
         torch.multiprocessing.spawn(
             trainer_ddp.train,
-            args = (model, train_config, config.model_config, config.ddp_config, dataset),
+            args = (model, train_config, config.model_config, config.ddp_config), # should be a variable dataset
             nprocs = config.ddp_config.world_size
         )
         # trainer_ddp.train(model, train_config, config.ddp_config, dataset)

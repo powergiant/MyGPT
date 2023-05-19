@@ -8,6 +8,6 @@ def encode_func(s: str) -> list[int]:
     return gpt_tokenizer(s)['input_ids']
 
 def decode_func(l: list[int]) -> str:
-    gpt_tokenizer.decode(l) 
+    return gpt_tokenizer.decode(l) 
 
 meta_vocab_size = gpt_tokenizer.vocab_size
