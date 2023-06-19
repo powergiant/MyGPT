@@ -8,6 +8,14 @@ import os
 import torch.distributed
 from trainer import TrainConfig
 import re
+import torch.amp
+from enum import Enum
+from contextlib import nullcontext
+
+class AmpDtype(Enum):
+    float32 = 1
+    bfloat16 = 2
+    float16 = 3
 
 @dataclass 
 class DDPConfig:
@@ -17,7 +25,7 @@ class DDPConfig:
     
 
 # dataset: Dataset should be a variable but it is a global variable to save memory
-def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, ddp_config: DDPConfig):
+def train(rank: int, model: GPT, train_config: TrainConfig, model_config: GPTConfig, ddp_config: DDPConfig):
     from train import dataset
     torch.manual_seed(1337 + rank * 5)
     torch.cuda.manual_seed(1337 + rank * 5)
@@ -28,6 +36,11 @@ def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, 
     optimizer = model.config_optimizer(train_config.learning_rate, train_config.weight_decay, (train_config.beta1, train_config.beta2), train_config.device)
     model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[rank])
     
+    if ddp_config.if_amp:
+        amp_context, scaler = set_up_amp(dtype = AmpDtype.bfloat16, device = train_config.device)
+    else:
+        amp_context, scaler = set_up_amp(dtype =  AmpDtype.float32, device = train_config.device)
+
     lr_scheduler = get_lr_scheduler(optimizer, train_config)
 
     loss_val_best = 1e9
@@ -48,16 +61,19 @@ def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, 
             model.require_backward_grad_sync = (micro_step ==  gradient_accumulation_steps - 1)
             index_start = micro_step*train_config.n_minibatch
             index_end = (micro_step+1)*train_config.n_minibatch
-            logits, loss = model.forward(input[index_start: index_end, ...], 
-                                          target[index_start: index_end, ...])
-            loss = loss/gradient_accumulation_steps
-            loss.backward()
+            with amp_context:
+                logits, loss = model.forward(input[index_start: index_end, ...], 
+                                            target[index_start: index_end, ...])
+                loss = loss/gradient_accumulation_steps
+            scaler.scale(loss).backward()
         
         if train_config.grad_clip is not None:
+            scaler.unscale_(optimizer)
             torch.nn.utils.clip_grad_norm_(model.parameters(), train_config.grad_clip)
         
         lr_scheduler(it)
-        optimizer.step()
+        scaler.step(optimizer)
+        scaler.update()
         optimizer.zero_grad(set_to_none=True)
         
         it += 1
@@ -99,9 +115,22 @@ def train(rank: int, model, train_config: TrainConfig, model_config: GPTConfig, 
 
 def set_up_ddp(rank: int, ddp_config: DDPConfig):
     os.environ['MASTER_ADDR'] = 'localhost'
-    os.environ['MASTER_PORT'] = '12305'
+    os.environ['MASTER_PORT'] = '12335'
     torch.distributed.init_process_group(ddp_config.backend, rank=rank, world_size=ddp_config.world_size)
 
+
+
+def set_up_amp(dtype: AmpDtype, device: torch.device) -> tuple[torch.amp.autocast|nullcontext, torch.cuda.amp.GradScaler]:
+    scaler = torch.cuda.amp.GradScaler(enabled=(dtype==AmpDtype.float16))
+    match dtype:
+        case AmpDtype.float32:
+            dtype_str = torch.float32
+        case AmpDtype.bfloat16:
+            dtype_str = torch.bfloat16
+        case AmpDtype.float16:
+            dtype_str = torch.float16
+    amp_context = nullcontext() if device.type == 'cpu' else torch.amp.autocast(device_type = device.type, dtype = dtype_str)
+    return amp_context, scaler
 
 def get_lr_scheduler(optimizer: torch.optim.Optimizer, train_config: TrainConfig):
     def get_lr(it: int):
@@ -125,11 +154,12 @@ def get_lr_scheduler(optimizer: torch.optim.Optimizer, train_config: TrainConfig
     return lr_scheduler
 
 @torch.no_grad()
-def get_loss_val(model, dataset: Dataset, n_minibatch: int, train_config: TrainConfig, model_config: GPTConfig):
+def get_loss_val(model: GPT, dataset: Dataset, n_minibatch: int, train_config: TrainConfig, model_config: GPTConfig, amp_context: torch.amp.autocast|nullcontext = nullcontext()):
     model.eval() # change to eval to handle the possibly present dropout
 
     input_val, target_val = dataset.get_batch(model_config.n_blocksize, n_minibatch, DataType.ValData, device = train_config.device)
-    logits, loss_val = model.forward(input_val, target_val)
+    with amp_context:
+        logits, loss_val = model.forward(input_val, target_val)
 
     model.train()
     return loss_val

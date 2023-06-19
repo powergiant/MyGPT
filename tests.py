@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 from config import decode_func
+from typing import Literal
 
 print(decode_func([    0,   198,   198,    43,  1921,   569,  7156,  1921,    11,   327,
          23518,    11,  7946, 35455,   784,   383, 31252,  1839,   257, 14167,
@@ -54,6 +55,14 @@ print(decode_func([    0,   198,   198,    43,  1921,   569,  7156,  1921,    11
          11203,   260,   531,    13,   564,   250,    40,   804,  2651,   284,
           4379])
 )
+
+def f(s: Literal['some','a']):
+    pass
+
+f(s='some')        
+
+
+
 # class Net(nn.Module):
 #     def __init__(self) -> None:
 #         super().__init__()

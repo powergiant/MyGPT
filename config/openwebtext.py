@@ -25,7 +25,7 @@ if if_ddp:
     #               "fp16": {"enabled": True}, 
     #               "zero_optimization": True, 
     #               'gradient_clipping': train_config.grad_clip}
-    ddp_config = DDPConfig(world_size = 8)
+    ddp_config = DDPConfig(world_size = 8, if_amp = True)
 else:
     # train_config = TrainConfig(learning_rate = 1e-3, weight_decay = 0.1, beta1 = 0.9, 
     #                     beta2 = 0.99, device = my_device, n_batch = 480, n_minibatch = 12, 
