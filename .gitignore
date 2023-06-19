@@ -1,8 +1,13 @@
 __pycache__/
 notes
+log/*
+out/*
+env.sh
+tests.py
 data/*
 !data/*/
 data/*/*
 !data/*/prepare.py
 !data/*/meta.py
 !data/*/readme.md
+
